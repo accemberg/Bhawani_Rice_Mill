@@ -1,115 +1,159 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import Button from "./Button";
+import { Menu, X, Phone } from "lucide-react";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { label: "Home", href: "#" },
   { label: "About", href: "#about" },
   { label: "Products", href: "#products" },
+  { label: "Mill", href: "#mill" },
   { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [active, setActive] = useState("Home");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <nav
-      className={`nav-accent fixed top-0 inset-x-0 z-50 transition-shadow duration-300 ${
-        scrolled ? "scrolled shadow-lg" : ""
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+        scrolled ? "nav-scrolled" : "nav-top"
       }`}
-      style={{ backgroundColor: "#1B4332" }}
     >
-      {/* ── Desktop & Tablet bar ── */}
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 sm:px-8 lg:px-16">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 sm:px-10 lg:px-16 h-[68px]">
 
-        {/* Logo — pinned LEFT */}
-        <a href="#" className="flex items-center gap-3 shrink-0">
-          <span
-            className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm"
-            style={{ backgroundColor: "#D4A017", color: "#1B4332" }}
+        {/* Logo */}
+        <a href="#" className="flex items-center gap-3 shrink-0" id="nav-logo">
+          <div
+            className="relative w-9 h-9 overflow-hidden shrink-0"
+            style={{ borderRadius: "8px", border: "1px solid rgba(212,160,23,0.4)" }}
           >
-            S
-          </span>
-          <span className="font-heading text-white text-lg font-bold tracking-tight leading-tight">
-            Shri Shyam Bhog
-          </span>
+            <Image src="/logo.png" alt="Shri Shyam Bhog" fill sizes="36px" className="object-cover" priority />
+          </div>
+          <div style={{ lineHeight: 1 }}>
+            <span
+              className="font-heading text-white font-bold block"
+              style={{ fontSize: "0.95rem", letterSpacing: "0.01em" }}
+            >
+              Shri Shyam Bhog
+            </span>
+            <span
+              style={{ fontSize: "0.55rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(212,160,23,0.7)", display: "block", marginTop: "2px" }}
+            >
+              Est. 1985
+            </span>
+          </div>
         </a>
 
-        {/* Desktop links — centered (hidden on mobile) */}
-        <ul className="hidden md:flex items-center gap-8">
+        {/* Desktop links */}
+        <ul className="hidden md:flex items-center gap-0">
           {NAV_LINKS.map((l) => (
             <li key={l.label}>
               <a
                 href={l.href}
-                className="nav-link text-white/80 text-sm font-medium hover:text-white transition-colors"
+                onClick={() => setActive(l.label)}
+                className="relative block px-4 py-2 text-sm font-medium transition-colors duration-200"
+                style={{
+                  color: active === l.label ? "white" : "rgba(255,255,255,0.5)",
+                }}
               >
                 {l.label}
+                {active === l.label && (
+                  <span
+                    style={{
+                      position: "absolute",
+                      bottom: "4px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: "4px",
+                      height: "4px",
+                      borderRadius: "50%",
+                      background: "var(--gold)",
+                      display: "block",
+                    }}
+                  />
+                )}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Right side — CTA + hamburger */}
-        <div className="flex items-center gap-3">
-          {/* Get a Quote — visible on desktop */}
-          <Button
-            variant="primary"
-            className="hidden md:inline-flex text-sm font-semibold tracking-wide px-5 py-2.5"
+        {/* Desktop CTA */}
+        <div className="hidden md:flex items-center gap-5">
+          <a
+            href="tel:+919876543210"
+            className="flex items-center gap-1.5 text-xs font-medium"
+            style={{ color: "rgba(255,255,255,0.45)", transition: "color 0.2s" }}
+          >
+            <Phone size={12} />
+            +91 98765 43210
+          </a>
+          <a
+            href="#contact"
+            id="nav-cta-btn"
+            className="nav-cta-btn px-5 py-2 text-xs rounded-full"
           >
             Get a Quote
-          </Button>
-
-          {/* Hamburger — mobile only */}
-          <button
-            className="md:hidden text-white p-1.5 rounded"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          </a>
         </div>
-      </div>
 
-      {/* ── Mobile drawer ── */}
+        {/* Hamburger */}
+        <button
+          className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-[5px] rounded-md"
+          style={{ background: "rgba(255,255,255,0.07)" }}
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className={`hamburger-line ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+          <span className={`hamburger-line ${mobileOpen ? "opacity-0 scale-x-0" : ""}`} />
+          <span className={`hamburger-line ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+        </button>
+      </nav>
+
+      {/* Mobile drawer */}
       <div
-        className={`md:hidden border-t overflow-hidden transition-all duration-300 ${
-          mobileOpen ? "max-h-screen" : "max-h-0"
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          mobileOpen ? "max-h-[380px] opacity-100" : "max-h-0 opacity-0"
         }`}
-        style={{ borderColor: "rgba(255,255,255,0.12)", backgroundColor: "#163828" }}
+        style={{ background: "#0d2218", borderTop: "1px solid rgba(212,160,23,0.12)" }}
       >
-        <ul className="flex flex-col px-5 py-5 gap-1">
+        <ul className="px-6 pt-4 pb-2 flex flex-col gap-0.5">
           {NAV_LINKS.map((l) => (
             <li key={l.label}>
               <a
                 href={l.href}
-                className="block text-white/80 text-base font-medium hover:text-white py-3 border-b transition-colors"
-                style={{ borderColor: "rgba(255,255,255,0.08)" }}
-                onClick={() => setMobileOpen(false)}
+                onClick={() => { setActive(l.label); setMobileOpen(false); }}
+                className="flex items-center px-3 py-3 rounded-lg text-sm font-medium transition-all"
+                style={{
+                  color: active === l.label ? "white" : "rgba(255,255,255,0.55)",
+                  background: active === l.label ? "rgba(255,255,255,0.06)" : "transparent",
+                  borderLeft: active === l.label ? "2px solid var(--gold)" : "2px solid transparent",
+                }}
               >
                 {l.label}
               </a>
             </li>
           ))}
-          <li className="pt-4">
-            <Button
-              variant="primary"
-              className="w-full text-sm font-semibold py-3"
-              onClick={() => setMobileOpen(false)}
-            >
-              Get a Quote
-            </Button>
-          </li>
         </ul>
+        <div className="px-6 pb-5 pt-1">
+          <a
+            href="#contact"
+            onClick={() => setMobileOpen(false)}
+            className="nav-cta-btn block text-center w-full px-5 py-3 text-sm rounded-full"
+          >
+            Get a Quote
+          </a>
+        </div>
       </div>
-    </nav>
+    </header>
   );
 }

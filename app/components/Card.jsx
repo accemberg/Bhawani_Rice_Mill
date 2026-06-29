@@ -1,15 +1,18 @@
 export default function Card({ icon: Icon, title, description }) {
   return (
-    <div className="feature-card bg-white rounded-lg p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="feature-card-new">
       {Icon && (
-        <div className="mb-5 text-brand-gold">
-          <Icon size={32} strokeWidth={1.5} />
+        <div style={{ color: "var(--green)", marginBottom: "1rem" }}>
+          <Icon size={28} strokeWidth={1.5} />
         </div>
       )}
-      <h3 className="font-heading text-xl font-bold text-brand-green mb-3">
+      <h3
+        className="font-heading font-bold"
+        style={{ fontSize: "1.1rem", color: "var(--green)", marginBottom: "0.75rem" }}
+      >
         {title}
       </h3>
-      <p className="text-brand-charcoal/70 leading-relaxed text-[0.95rem]">
+      <p style={{ fontSize: "0.9rem", color: "rgba(26,26,26,0.6)", lineHeight: 1.7 }}>
         {description}
       </p>
     </div>
