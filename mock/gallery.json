@@ -1,0 +1,7 @@
+[
+  { "id": "g1", "imageUrl": "/placeholder.jpg", "category": "factory", "caption": "Main processing unit" },
+  { "id": "g2", "imageUrl": "/placeholder.jpg", "category": "machines", "caption": "Sorting machines" },
+  { "id": "g3", "imageUrl": "/placeholder.jpg", "category": "packaging", "caption": "Packaging line" },
+  { "id": "g4", "imageUrl": "/placeholder.jpg", "category": "warehouse", "caption": "Storage warehouse" },
+  { "id": "g5", "imageUrl": "/placeholder.jpg", "category": "lab", "caption": "Quality testing lab" }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "t1",
+    "quote": "Bhawani Rice Mill delivers consistent quality across every shipment.",
+    "name": "Rajesh Agarwal",
+    "designation": "Procurement Head",
+    "company": "Global Foods Ltd"
+  },
+  {
+    "id": "t2",
+    "quote": "The basmati rice quality is unmatched. Long grains, perfect aroma.",
+    "name": "Sunita Mehta",
+    "designation": "Director",
+    "company": "Mehta Distributors"
+  },
+  {
+    "id": "t3",
+    "quote": "Reliable supplier for 5 years. Never had a quality complaint.",
+    "name": "Ahmed Al-Farsi",
+    "designation": "Import Manager",
+    "company": "Al-Farsi Trading, UAE"
+  }
+]

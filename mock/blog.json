@@ -1,0 +1,20 @@
+[
+  {
+    "id": "b1",
+    "title": "Why Basmati Rice is India's Export Pride",
+    "slug": "why-basmati-rice-indias-export-pride",
+    "excerpt": "India accounts for over 65% of global basmati exports.",
+    "date": "2026-06-20",
+    "category": "export",
+    "coverImageUrl": "/placeholder.jpg"
+  },
+  {
+    "id": "b2",
+    "title": "7 Quality Checkpoints That Define Premium Rice",
+    "slug": "7-quality-checkpoints-premium-rice",
+    "excerpt": "How we ensure every batch meets international standards.",
+    "date": "2026-06-15",
+    "category": "quality",
+    "coverImageUrl": "/placeholder.jpg"
+  }
+]

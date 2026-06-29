@@ -1,0 +1,20 @@
+{
+  "id": "p1",
+  "name": "Premium Basmati Rice",
+  "category": "basmati",
+  "images": ["/placeholder.jpg", "/placeholder.jpg"],
+  "specPdfUrl": "",
+  "sizes": ["5kg", "25kg", "50kg"],
+  "applications": ["Hotels", "Export", "Retail"],
+  "description": "Long grain premium basmati with rich aroma.",
+  "specs": {
+    "grainLength": "8.3mm",
+    "moisture": "< 13%",
+    "brokenGrains": "< 1%",
+    "foreignMatter": "Nil"
+  },
+  "seo": {
+    "title": "Premium Basmati Rice | Bhawani Rice Mill",
+    "description": "Export quality premium basmati rice."
+  }
+}
