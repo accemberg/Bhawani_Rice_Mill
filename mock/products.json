@@ -1,0 +1,32 @@
+[
+  {
+    "id": "p1",
+    "name": "Premium Basmati Rice",
+    "category": "basmati",
+    "images": ["/placeholder.jpg"],
+    "specPdfUrl": "",
+    "sizes": ["5kg", "25kg", "50kg"],
+    "applications": ["Hotels", "Export", "Retail"],
+    "description": "Long grain premium basmati with rich aroma."
+  },
+  {
+    "id": "p2",
+    "name": "Golden Sella Basmati",
+    "category": "basmati",
+    "images": ["/placeholder.jpg"],
+    "specPdfUrl": "",
+    "sizes": ["5kg", "25kg"],
+    "applications": ["Export", "Industrial"],
+    "description": "Parboiled golden sella basmati rice."
+  },
+  {
+    "id": "p3",
+    "name": "Non-Basmati White Rice",
+    "category": "non-basmati",
+    "images": ["/placeholder.jpg"],
+    "specPdfUrl": "",
+    "sizes": ["10kg", "25kg"],
+    "applications": ["Retail", "OEM"],
+    "description": "High quality non-basmati white rice."
+  }
+]

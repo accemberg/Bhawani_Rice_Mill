@@ -1,0 +1,6 @@
+[
+  { "id": "c1", "name": "FSSAI", "status": "active", "logoUrl": "" },
+  { "id": "c2", "name": "ISO 9001", "status": "active", "logoUrl": "" },
+  { "id": "c3", "name": "APEDA", "status": "coming_soon", "logoUrl": "" },
+  { "id": "c4", "name": "MSME", "status": "coming_soon", "logoUrl": "" }
+]
