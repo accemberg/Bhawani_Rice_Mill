@@ -3,9 +3,10 @@ import { mockBlogs } from '@/lib/mockData';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const blog = mockBlogs.find(b => b.slug === params.slug);
+  const { slug } = await params;
+  const blog = mockBlogs.find(b => b.slug === slug);
 
   if (!blog) {
     return NextResponse.json(
@@ -15,4 +16,4 @@ export async function GET(
   }
 
   return NextResponse.json(blog);
-}
+}

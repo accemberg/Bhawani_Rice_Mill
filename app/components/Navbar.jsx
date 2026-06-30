@@ -3,19 +3,22 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#about" },
-  { label: "Products", href: "#products" },
-  { label: "Mill", href: "#mill" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home",           href: "/" },
+  { label: "Products",       href: "/products" },
+  { label: "Quality",        href: "/quality" },
+  { label: "Gallery",        href: "/gallery" },
+  { label: "Careers",        href: "/careers" },
+  { label: "Contact",        href: "/contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [active, setActive] = useState("Home");
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -23,51 +26,51 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close mobile drawer on route change
+  useEffect(() => { setMobileOpen(false); }, [pathname]);
+
+  const isActive = (href) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled ? "nav-scrolled" : "nav-top"
       }`}
     >
-      <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 sm:px-10 lg:px-16 h-[68px]">
+      <nav className="w-full relative flex items-center justify-between px-4 sm:px-6 lg:px-8 h-[68px]">
 
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 shrink-0" id="nav-logo">
+        <Link href="/" className="flex items-center shrink-0" id="nav-logo">
+          {/* Circular Logo Emblem */}
           <div
-            className="relative w-9 h-9 overflow-hidden shrink-0"
-            style={{ borderRadius: "8px", border: "1px solid rgba(212,160,23,0.4)" }}
+            className="relative shrink-0 transition-transform duration-300 hover:scale-105"
+            style={{ width: 56, height: 56 }}
           >
-            <Image src="/logo.png" alt="Shri Shyam Bhog" fill sizes="36px" className="object-cover" priority />
-          </div>
-          <div style={{ lineHeight: 1 }}>
-            <span
-              className="font-heading text-white font-bold block"
-              style={{ fontSize: "0.95rem", letterSpacing: "0.01em" }}
+            <div
+              className="absolute inset-0 overflow-hidden"
+              style={{ borderRadius: "50%", border: "1.5px solid var(--gold)" }}
             >
-              Shri Shyam Bhog
-            </span>
-            <span
-              style={{ fontSize: "0.55rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(212,160,23,0.7)", display: "block", marginTop: "2px" }}
-            >
-              Est. 1985
-            </span>
+              <Image src="/logo.png" alt="Shri Shyam Bhog" fill sizes="56px" className="object-cover" priority />
+            </div>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-0">
+        <ul className="hidden md:flex items-center gap-0 absolute left-1/2 -translate-x-1/2">
           {NAV_LINKS.map((l) => (
             <li key={l.label}>
-              <a
+              <Link
                 href={l.href}
-                onClick={() => setActive(l.label)}
                 className="relative block px-4 py-2 text-sm font-medium transition-colors duration-200"
                 style={{
-                  color: active === l.label ? "white" : "rgba(255,255,255,0.5)",
+                  color: isActive(l.href) ? "white" : "rgba(255,255,255,0.5)",
                 }}
               >
                 {l.label}
-                {active === l.label && (
+                {isActive(l.href) && (
                   <span
                     style={{
                       position: "absolute",
@@ -82,7 +85,7 @@ export default function Navbar() {
                     }}
                   />
                 )}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -97,13 +100,13 @@ export default function Navbar() {
             <Phone size={12} />
             +91 98765 43210
           </a>
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             id="nav-cta-btn"
             className="nav-cta-btn px-5 py-2 text-xs rounded-full"
           >
             Get a Quote
-          </a>
+          </Link>
         </div>
 
         {/* Hamburger */}
@@ -122,36 +125,34 @@ export default function Navbar() {
       {/* Mobile drawer */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileOpen ? "max-h-[380px] opacity-100" : "max-h-0 opacity-0"
+          mobileOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"
         }`}
         style={{ background: "#0d2218", borderTop: "1px solid rgba(212,160,23,0.12)" }}
       >
         <ul className="px-6 pt-4 pb-2 flex flex-col gap-0.5">
           {NAV_LINKS.map((l) => (
             <li key={l.label}>
-              <a
+              <Link
                 href={l.href}
-                onClick={() => { setActive(l.label); setMobileOpen(false); }}
                 className="flex items-center px-3 py-3 rounded-lg text-sm font-medium transition-all"
                 style={{
-                  color: active === l.label ? "white" : "rgba(255,255,255,0.55)",
-                  background: active === l.label ? "rgba(255,255,255,0.06)" : "transparent",
-                  borderLeft: active === l.label ? "2px solid var(--gold)" : "2px solid transparent",
+                  color: isActive(l.href) ? "white" : "rgba(255,255,255,0.55)",
+                  background: isActive(l.href) ? "rgba(255,255,255,0.06)" : "transparent",
+                  borderLeft: isActive(l.href) ? "2px solid var(--gold)" : "2px solid transparent",
                 }}
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
         <div className="px-6 pb-5 pt-1">
-          <a
-            href="#contact"
-            onClick={() => setMobileOpen(false)}
+          <Link
+            href="/contact"
             className="nav-cta-btn block text-center w-full px-5 py-3 text-sm rounded-full"
           >
             Get a Quote
-          </a>
+          </Link>
         </div>
       </div>
     </header>
