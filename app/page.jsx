@@ -3,6 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import StatsBar from "./components/StatsBar";
+import CertificationsStrip from "./components/CertificationsStrip";
+import TestimonialsSection from "./components/TestimonialsSection";
+import BlogPreview from "./components/BlogPreview";
 import Image from "next/image";
 import {
   CircleCheck, Globe, Building2, VolumeX, Volume2,
@@ -71,7 +75,7 @@ export default function HomePage() {
         >
           {/* Eyebrow tag */}
           <div className="hero-tag mb-6">
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--gold)", display: "inline-block" }} />
+            <span style={{ width: 40, height: 2, background: "var(--gold)", display: "inline-block" }} />
             Est. 1985 &mdash; Bihar, India
           </div>
 
@@ -132,6 +136,11 @@ export default function HomePage() {
           {muted ? <VolumeX size={15} /> : <Volume2 size={15} />}
         </button>
       </section>
+
+      {/* ═══════════════════════════════════════
+          STATS BAR
+      ═══════════════════════════════════════ */}
+      <StatsBar />
 
       {/* ═══════════════════════════════════════
           ABOUT — asymmetric, editorial
@@ -210,6 +219,11 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════
+          CERTIFICATIONS
+      ═══════════════════════════════════════ */}
+      <CertificationsStrip />
+
+      {/* ═══════════════════════════════════════
           PRODUCTS
       ═══════════════════════════════════════ */}
       <section className="products-section" id="products">
@@ -244,6 +258,7 @@ export default function HomePage() {
                     src="/all product.png"
                     alt="All Shri Shyam Bhog Products"
                     fill
+                    priority
                     sizes="(max-width:1024px) 100vw, 50vw"
                     className="object-cover"
                     style={{ transition: "transform 0.7s ease" }}
@@ -433,6 +448,16 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════
+          TESTIMONIALS
+      ═══════════════════════════════════════ */}
+      <TestimonialsSection />
+
+      {/* ═══════════════════════════════════════
+          BLOG PREVIEW
+      ═══════════════════════════════════════ */}
+      <BlogPreview />
 
       {/* ═══════════════════════════════════════
           CTA BAND — dark, big type
