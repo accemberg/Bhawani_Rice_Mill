@@ -1,15 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { mockGallery } from '@/lib/mockData';
+import { db } from '@/lib/firebase/admin';
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const category = searchParams.get('category');
+  try {
+    const { searchParams } = new URL(request.url);
+    const category = searchParams.get('category');
 
-  let gallery = mockGallery;
+    let query: FirebaseFirestore.Query = db.collection('gallery');
 
-  if (category && category !== 'all') {
-    gallery = mockGallery.filter(item => item.category === category);
+    if (category && category !== 'all') {
+      query = query.where('category', '==', category);
+    }
+
+    const snapshot = await query.get();
+    const gallery = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+    return NextResponse.json(gallery);
+  } catch (error) {
+    console.error('[api/gallery]', error);
+    return NextResponse.json({ error: 'Failed to fetch gallery' }, { status: 500 });
   }
-
-  return NextResponse.json(gallery);
 }
