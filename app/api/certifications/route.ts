@@ -1,6 +1,13 @@
 import { NextResponse } from 'next/server';
-import { mockCertifications } from '@/lib/mockData';
+import { db } from '@/lib/firebase/admin';
 
 export async function GET() {
-  return NextResponse.json(mockCertifications);
+  try {
+    const snapshot = await db.collection('Certifications').get();
+    const certifications = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    return NextResponse.json(certifications);
+  } catch (error) {
+    console.error('[api/certifications]', error);
+    return NextResponse.json({ error: 'Failed to fetch certifications' }, { status: 500 });
+  }
 }
