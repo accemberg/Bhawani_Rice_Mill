@@ -3,30 +3,123 @@
     "id": "p1",
     "name": "Premium Basmati Rice",
     "category": "basmati",
-    "images": ["/placeholder.jpg"],
+    "images": ["/products/basmati.png"],
     "specPdfUrl": "",
     "sizes": ["5kg", "25kg", "50kg"],
-    "applications": ["Hotels", "Export", "Retail"],
-    "description": "Long grain premium basmati with rich aroma."
+    "applications": ["Hotels & Restaurants", "Export Markets", "Modern Retail"],
+    "description": "Long grain premium basmati with rich aroma and exceptional elongation ratio — sourced from the finest farms in Pusa, Bihar.",
+    "specs": {
+      "Grain Length": "8.3 mm",
+      "Elongation Ratio": "≥ 1.7×",
+      "Moisture Content": "< 13%",
+      "Broken Grains": "< 1%",
+      "Foreign Matter": "Nil",
+      "Milling": "Double Polished"
+    }
   },
   {
     "id": "p2",
     "name": "Golden Sella Basmati",
     "category": "basmati",
-    "images": ["/placeholder.jpg"],
+    "images": ["/products/sella.png"],
     "specPdfUrl": "",
-    "sizes": ["5kg", "25kg"],
-    "applications": ["Export", "Industrial"],
-    "description": "Parboiled golden sella basmati rice."
+    "sizes": ["5kg", "25kg", "50kg"],
+    "applications": ["Export Markets", "Industrial Kitchens", "Catering"],
+    "description": "Parboiled golden sella basmati rice — preferred for its non-sticky texture, superior shelf life and vibrant golden hue.",
+    "specs": {
+      "Grain Length": "7.9 mm",
+      "Moisture Content": "< 12.5%",
+      "Broken Grains": "< 2%",
+      "Chalk": "< 1%",
+      "Foreign Matter": "Nil",
+      "Processing": "Steam Parboiled"
+    }
   },
   {
     "id": "p3",
     "name": "Non-Basmati White Rice",
     "category": "non-basmati",
-    "images": ["/placeholder.jpg"],
+    "images": ["/products/non_basmati.png"],
+    "specPdfUrl": "",
+    "sizes": ["10kg", "25kg", "50kg"],
+    "applications": ["Retail Chains", "OEM Private Label", "Institutional Supply"],
+    "description": "High quality non-basmati white rice with consistent grain size — ideal for domestic retail and institutional bulk buyers.",
+    "specs": {
+      "Variety": "IR-64 / IR-36",
+      "Moisture Content": "< 14%",
+      "Broken Grains": "< 5%",
+      "Foreign Matter": "< 0.1%",
+      "Milling": "Polished"
+    }
+  },
+  {
+    "id": "p4",
+    "name": "Value Range Parboiled Rice",
+    "category": "value",
+    "images": ["/products/value.png"],
     "specPdfUrl": "",
     "sizes": ["10kg", "25kg"],
-    "applications": ["Retail", "OEM"],
-    "description": "High quality non-basmati white rice."
+    "applications": ["Budget Retail", "NGO / Aid Programs", "Canteen Supply"],
+    "description": "Economical parboiled rice without compromising on hygiene standards — double-cleaned and fortified for mass consumption.",
+    "specs": {
+      "Moisture Content": "< 14%",
+      "Broken Grains": "< 10%",
+      "Foreign Matter": "< 0.2%",
+      "Processing": "Parboiled"
+    }
+  },
+  {
+    "id": "p5",
+    "name": "Export Grade Steam Rice",
+    "category": "export",
+    "images": ["/products/steam.png"],
+    "specPdfUrl": "",
+    "sizes": ["25kg", "50kg", "1MT Bulk"],
+    "applications": ["Middle East Export", "European Markets", "Wholesale Distribution"],
+    "description": "Phytosanitary-certified steam rice packed to international standards — ready for direct container loading to global markets.",
+    "specs": {
+      "Grain Length": "6.5 mm",
+      "Moisture Content": "< 12%",
+      "Broken Grains": "< 3%",
+      "Foreign Matter": "Nil",
+      "Certification": "Phytosanitary",
+      "Packaging": "Vacuum Sealed"
+    }
+  },
+  {
+    "id": "p6",
+    "name": "OEM White Rice — Private Label",
+    "category": "oem",
+    "images": ["/products/basmati.png"],
+    "specPdfUrl": "",
+    "sizes": ["1kg", "5kg", "10kg", "25kg", "Custom"],
+    "applications": ["Supermarket Private Label", "HORECA Brands", "Regional Distributors"],
+    "description": "Custom-branded rice milling for B2B clients — we mill, sort, grade and pack to your brand's exact specification and packaging design.",
+    "specs": {
+      "MOQ": "10 Metric Tonnes",
+      "Lead Time": "7–14 Days",
+      "Custom Packaging": "Yes",
+      "Label Design": "Client Supplied",
+      "Moisture Content": "< 13%",
+      "Broken Grains": "Per spec"
+    }
+  },
+  {
+    "id": "p7",
+    "name": "OEM Basmati — Bulk Private Label",
+    "category": "oem",
+    "images": ["/products/sella.png"],
+    "specPdfUrl": "",
+    "sizes": ["5kg", "10kg", "25kg", "Custom"],
+    "applications": ["Retail Private Label", "Export Re-Branding", "White Label FMCG"],
+    "description": "Premium basmati milled and packed under your brand — complete with FSSAI-compliant labelling, custom artwork, and documentation support.",
+    "specs": {
+      "MOQ": "5 Metric Tonnes",
+      "Lead Time": "10–15 Days",
+      "Custom Packaging": "Yes",
+      "Certifications Available": "FSSAI, ISO",
+      "Grain Length": "8.0 mm",
+      "Moisture Content": "< 13%"
+    }
   }
 ]

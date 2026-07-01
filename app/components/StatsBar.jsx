@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 const STATS = [
   { key: "yearsExperience",    label: "Years of Experience",   suffix: "+",  format: false },
+  { key: "happyClients",       label: "Happy Clients",         suffix: "+",  format: true  },
   { key: "dailyCapacityMT",    label: "Daily Milling Capacity",suffix: " MT", format: false },
   { key: "storageCapacityMT",  label: "Storage Capacity",      suffix: " MT", format: true  },
   { key: "distributionNetwork",label: "Distribution Network",  suffix: "+",  format: false },
@@ -71,7 +72,7 @@ export default function StatsBar() {
         {STATS.map(({ key, label, suffix, format }) => (
           <Counter
             key={key}
-            value={stats ? stats[key] : 0}
+            value={stats?.[key] || 0}
             label={label}
             suffix={suffix}
             format={format}
