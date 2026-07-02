@@ -33,7 +33,7 @@ export default function Footer() {
           </a>
           <p style={{ fontSize: "0.85rem", lineHeight: 1.8, maxWidth: "15rem", color: "rgba(255,255,255,0.4)" }}>
             Premium milled rice from India&apos;s finest paddy belts. Supplying wholesalers,
-            exporters, and institutional buyers across 30+ countries since 1985.
+            exporters, and institutional buyers across 30+ countries since 1999.
           </p>
         </div>
 
@@ -86,9 +86,9 @@ export default function Footer() {
           </h4>
           <ul style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             {[
-              { icon: Phone, label: "+91 98765 43210", href: "tel:+919876543210" },
-              { icon: Mail, label: "info@bhawanirice.com", href: "mailto:info@bhawanirice.com" },
-              { icon: MapPin, label: "Bihar, India", href: "#" },
+              { icon: Phone, label: "+91 73208 34390", href: "tel:+917320834390" },
+              { icon: Mail, label: "bhawaniricemillbuxar@gmail.com", href: "mailto:bhawaniricemillbuxar@gmail.com" },
+              { icon: MapPin, label: "Bihar, India", href: "https://maps.app.goo.gl/DjAtAJzwtSr1UDFE8" },
             ].map(({ icon: Icon, label, href }) => (
               <li key={label}>
                 <a

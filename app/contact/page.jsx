@@ -91,7 +91,7 @@ function BusinessForm() {
         </div>
         <div className="field-group">
           <label className="field-label">Phone *</label>
-          <input id="b-phone" type="tel" className={`field-input ${errors.phone ? "error" : ""}`} placeholder="+91 98765 43210" value={fields.phone} onChange={set("phone")} />
+          <input id="b-phone" type="tel" className={`field-input ${errors.phone ? "error" : ""}`} placeholder="+91 73208 34390" value={fields.phone} onChange={set("phone")} />
           {errors.phone && <span className="field-error">{errors.phone}</span>}
         </div>
       </div>
@@ -111,7 +111,7 @@ function BusinessForm() {
       {status === "error" && (
         <div className="form-error-banner">
           Something went wrong on our end. Please email us directly at{" "}
-          <a href="mailto:info@bhawanirice.com">info@bhawanirice.com</a>
+          <a href="mailto:bhawaniricemillbuxar@gmail.com">bhawaniricemillbuxar@gmail.com</a>
         </div>
       )}
 
@@ -214,7 +214,7 @@ function ExportForm() {
 
       {status === "error" && (
         <div className="form-error-banner">
-          Something went wrong. Please email <a href="mailto:info@bhawanirice.com">info@bhawanirice.com</a> directly.
+          Something went wrong. Please email <a href="mailto:bhawaniricemillbuxar@gmail.com">bhawaniricemillbuxar@gmail.com</a> directly.
         </div>
       )}
 
@@ -287,7 +287,7 @@ function DealerForm() {
         </div>
         <div className="field-group">
           <label className="field-label">Phone *</label>
-          <input id="d-phone" type="tel" className={`field-input ${errors.phone ? "error" : ""}`} placeholder="+91 98765 43210" value={fields.phone} onChange={set("phone")} />
+          <input id="d-phone" type="tel" className={`field-input ${errors.phone ? "error" : ""}`} placeholder="+91 73208 34390" value={fields.phone} onChange={set("phone")} />
           {errors.phone && <span className="field-error">{errors.phone}</span>}
         </div>
       </div>
@@ -310,7 +310,7 @@ function DealerForm() {
 
       {status === "error" && (
         <div className="form-error-banner">
-          Something went wrong. Please email <a href="mailto:info@bhawanirice.com">info@bhawanirice.com</a> directly.
+          Something went wrong. Please email <a href="mailto:bhawaniricemillbuxar@gmail.com">bhawaniricemillbuxar@gmail.com</a> directly.
         </div>
       )}
 
@@ -323,9 +323,9 @@ function DealerForm() {
 
 /* ── Contact Info Cards ── */
 const CONTACT_INFO = [
-  { icon: Phone, label: "Phone", value: "+91 98765 43210", href: "tel:+919876543210" },
-  { icon: Mail,  label: "Email", value: "info@bhawanirice.com", href: "mailto:info@bhawanirice.com" },
-  { icon: MapPin,label: "Address", value: "Bhawani Rice Mill, Bihar, India", href: "#" },
+  { icon: Phone, label: "Phone", value: "+91 73208 34390", href: "tel:+917320834390" },
+  { icon: Mail,  label: "Email", value: "bhawaniricemillbuxar@gmail.com", href: "mailto:bhawaniricemillbuxar@gmail.com" },
+  { icon: MapPin,label: "Address", value: "Bhawani Rice Mill, Bihar, India", href: "https://maps.app.goo.gl/DjAtAJzwtSr1UDFE8" },
 ];
 
 /* ── Main Page ── */
@@ -408,7 +408,7 @@ export default function ContactPage() {
               {/* Map embed */}
               <div style={{ borderRadius: "14px", overflow: "hidden", border: "1px solid rgba(27,67,50,0.1)", flex: 1, minHeight: 280 }}>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14525.47!2d85.1375645!3d25.5940853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58dce6732867%3A0x4059f39a1ac82f06!2sPatna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1688000000000!5m2!1sen!2sin"
+                  src="https://maps.google.com/maps?q=Bhawani+Rice+Mill+Buxar&t=&z=13&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, display: "block", minHeight: 280 }}

@@ -1,17 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Award, Clock } from "lucide-react";
-
 export default function CertificationsStrip() {
-  const [certs, setCerts] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/certifications")
-      .then((r) => r.json())
-      .then(setCerts)
-      .catch(() => {});
-  }, []);
+  const certs = [
+    { id: 1, name: "FSSAI Certified", image: "/fssai.png", status: "active" },
+    { id: 2, name: "ISO 22000:2018", image: "/iso.png", status: "active" },
+    { id: 3, name: "AGMARK Certified", image: "/agmark.png", status: "active" },
+  ];
 
   return (
     <section className="cert-section fade-in" id="certifications">
@@ -40,8 +34,8 @@ export default function CertificationsStrip() {
                   key={cert.id}
                   className={`cert-badge ${isActive ? "active" : "coming-soon"}`}
                 >
-                  <div style={{ color: isActive ? "var(--gold)" : "#bbb", marginBottom: "0.25rem" }}>
-                    {isActive ? <Award size={24} strokeWidth={1.5} /> : <Clock size={22} strokeWidth={1.5} />}
+                  <div style={{ marginBottom: "0.5rem" }}>
+                    <img src={cert.image} alt={cert.name} width={48} height={48} style={{ objectFit: 'contain' }} />
                   </div>
                   <div className="cert-name">{cert.name}</div>
                   <span className={`cert-status-pill ${isActive ? "active-pill" : "soon-pill"}`}>

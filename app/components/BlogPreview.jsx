@@ -32,33 +32,15 @@ export default function BlogPreview() {
               <em style={{ fontStyle: "italic", color: "var(--green-mid)" }}>Rice & Export</em>
             </h2>
           </div>
-          <Link
-            href="/blog"
-            className="hidden sm:inline-flex items-center gap-2 text-sm font-bold"
-            style={{ color: "var(--green)", borderBottom: "2px solid var(--gold)", paddingBottom: "0.25rem" }}
-          >
-            View All <ArrowRight size={14} />
-          </Link>
         </div>
 
         {/* Blog cards */}
         <div className="grid md:grid-cols-2 gap-6">
           {blogs.map((blog) => (
             <div key={blog.id} className="blog-preview-card">
-              {/* Cover image placeholder */}
+              {/* Cover image */}
               <div className="blog-preview-img">
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    opacity: 0.15,
-                  }}
-                >
-                  <Wheat size={80} color="white" strokeWidth={0.75} />
-                </div>
+                <img src={blog.image || '/blog-placeholder.png'} alt={blog.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div
                   style={{
                     position: "absolute",
@@ -84,16 +66,6 @@ export default function BlogPreview() {
           ))}
         </div>
 
-        {/* Mobile view all */}
-        <div className="sm:hidden mt-8 text-center">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 font-bold text-sm"
-            style={{ color: "var(--green)", borderBottom: "2px solid var(--gold)", paddingBottom: "0.25rem" }}
-          >
-            View All Posts <ArrowRight size={14} />
-          </Link>
-        </div>
       </div>
     </section>
   );
