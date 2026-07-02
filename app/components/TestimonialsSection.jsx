@@ -55,16 +55,16 @@ export default function TestimonialsSection() {
               <div>
                 {renderStars()}
                 <Quote size={28} color="rgba(255,255,255,0.15)" className="mb-4" />
-                <p className="testimonial-text text-lg">{testimonials[0].quote}</p>
+                <p className="testimonial-text text-lg">{testimonials[0].quote || testimonials[0].review}</p>
               </div>
               <div className="testimonial-author flex items-center gap-4">
                 <div className="testimonial-avatar">
-                  {getInitials(testimonials[0].name)}
+                  {getInitials(testimonials[0].name || "Customer")}
                 </div>
                 <div>
                   <div className="testimonial-name">{testimonials[0].name}</div>
                   <div className="testimonial-role">
-                    {testimonials[0].designation} &mdash; {testimonials[0].company}
+                    {testimonials[0].designation || "Customer"} &mdash; {testimonials[0].company || "Retail"}
                   </div>
                 </div>
               </div>
@@ -76,15 +76,15 @@ export default function TestimonialsSection() {
                 <div key={t.id} className="testimonial-card flex flex-col sm:flex-row gap-6 items-start">
                   <div className="flex-1">
                     {renderStars()}
-                    <p className="testimonial-text mt-0">{t.quote}</p>
+                    <p className="testimonial-text mt-0">{t.quote || t.review}</p>
                   </div>
                   <div className="sm:w-64 shrink-0 sm:border-l border-white/10 sm:pl-6 mt-4 sm:mt-0">
                     <div className="testimonial-avatar mb-3">
-                      {getInitials(t.name)}
+                      {getInitials(t.name || "Customer")}
                     </div>
                     <div className="testimonial-name">{t.name}</div>
                     <div className="testimonial-role">
-                      {t.designation} <br/> {t.company}
+                      {t.designation || "Customer"} <br/> {t.company || "Retail"}
                     </div>
                   </div>
                 </div>

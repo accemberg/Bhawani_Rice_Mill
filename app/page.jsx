@@ -10,7 +10,9 @@ import BlogPreview from "./components/BlogPreview";
 import Image from "next/image";
 import {
   CircleCheck, Globe, Building2, VolumeX, Volume2,
-  Award, Leaf, Star, ArrowRight, MapPin
+  Award, Leaf, Star, ArrowRight, MapPin,
+  Tractor, Wind, Layers, Scissors, ScanLine,
+  BarChart3, FlaskConical, Shuffle, Package, Truck,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -446,6 +448,118 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          MANUFACTURING TIMELINE
+      ═══════════════════════════════════════ */}
+      <section className="mfg-section" id="manufacturing">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24">
+
+          {/* Header */}
+          <div className="flex gap-8 items-start mb-14 fade-in">
+            <div className="side-label mt-4 hidden md:block">Process</div>
+            <div>
+              <p style={{ fontSize: "0.65rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "var(--gold)", fontWeight: 700, marginBottom: "1rem" }}>
+                From Paddy to Pack
+              </p>
+              <h2 className="font-heading font-bold" style={{ fontSize: "clamp(2rem,6vw,4rem)", lineHeight: 1, letterSpacing: "-0.02em", color: "var(--green)" }}>
+                Manufacturing
+                <br />
+                <em style={{ fontStyle: "italic", color: "var(--green-mid)" }}>Timeline</em>
+              </h2>
+              <p style={{ marginTop: "1rem", fontSize: "0.9rem", color: "rgba(26,26,26,0.55)", lineHeight: 1.75, maxWidth: "34rem" }}>
+                10 precision-controlled steps — from farm-fresh paddy to export-ready packaging.
+                Scroll to explore our end-to-end milling process.
+              </p>
+            </div>
+          </div>
+
+          {/* Timeline track */}
+          <div className="mfg-timeline-track fade-in" id="mfg-timeline">
+            {[
+              {
+                num: "01",
+                icon: Tractor,
+                title: "Paddy Procurement",
+                desc: "Direct farm sourcing from select belts across Bihar — hand-inspected at point of origin.",
+              },
+              {
+                num: "02",
+                icon: Wind,
+                title: "Pre-Cleaning",
+                desc: "Initial air-separation to remove dust, straw, and oversized foreign matter before milling.",
+              },
+              {
+                num: "03",
+                icon: Layers,
+                title: "De-Husking",
+                desc: "Rubber-roll sheller removes the outer husk while preserving bran layer integrity.",
+              },
+              {
+                num: "04",
+                icon: Shuffle,
+                title: "Paddy Separation",
+                desc: "Paddy separator re-routes un-husked grain back to the sheller for zero wastage.",
+              },
+              {
+                num: "05",
+                icon: Scissors,
+                title: "Whitening",
+                desc: "Vertical abrasive whiteners progressively remove bran layers to target milling degree.",
+              },
+              {
+                num: "06",
+                icon: ScanLine,
+                title: "Colour Sorting",
+                desc: "High-speed optical sorters reject discoloured, chalky, and defective grains at 99.9% accuracy.",
+              },
+              {
+                num: "07",
+                icon: BarChart3,
+                title: "Grading",
+                desc: "Length graders separate head rice, brokens, and brewers for individual value streams.",
+              },
+              {
+                num: "08",
+                icon: FlaskConical,
+                title: "Quality Testing",
+                desc: "In-house lab checks moisture, whiteness, broken %, and foreign matter before packing clearance.",
+              },
+              {
+                num: "09",
+                icon: Package,
+                title: "Packaging",
+                desc: "Automated weighing and sealing — 1 kg to 50 kg formats, including vacuum and BOPP options.",
+              },
+              {
+                num: "10",
+                icon: Truck,
+                title: "Dispatch",
+                desc: "Phytosanitary-certified, fumigated, and container-loaded for domestic and export delivery.",
+              },
+            ].map(({ num, icon: Icon, title, desc }) => (
+              <div key={num} className="mfg-step" id={`mfg-step-${num}`}>
+                <div className="mfg-connector" aria-hidden="true" />
+                <div className="mfg-step-num">Step {num}</div>
+                <div className="mfg-step-icon">
+                  <Icon size={20} strokeWidth={1.6} />
+                </div>
+                <h3 className="mfg-step-title">{title}</h3>
+                <p className="mfg-step-desc">{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Scroll hint — desktop only */}
+          <p
+            className="hidden md:flex items-center gap-2 mt-5 fade-in"
+            style={{ fontSize: "0.68rem", color: "rgba(26,26,26,0.35)", letterSpacing: "0.12em", textTransform: "uppercase" }}
+          >
+            <span style={{ width: 24, height: 1, background: "var(--gold)", display: "inline-block", opacity: 0.6 }} />
+            Scroll to see all 10 steps
+          </p>
         </div>
       </section>
 
