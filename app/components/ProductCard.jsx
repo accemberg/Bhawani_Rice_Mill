@@ -3,9 +3,15 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export default function ProductCard({ product }) {
-  const { id, name, category, description, sizes = [], applications = [] } = product;
+  const name = product.name || product.Name || product['Name '];
+  const category = product.category || product.Category;
+  const description = product.description || product.Description;
+  const sizes = product.sizes || product.Sizes || [];
+  const applications = product.applications || product.Applications || [];
+  const id = product.id;
 
   const getImageForCategory = (cat) => {
+    if (!cat) return "/products/basmati.png";
     const c = cat.toLowerCase();
     if (c.includes("sella")) return "/products/sella.png";
     if (c.includes("steam")) return "/products/steam.png";
@@ -16,6 +22,7 @@ export default function ProductCard({ product }) {
   };
 
   const getColorForCategory = (cat) => {
+    if (!cat) return "var(--green-mid)";
     const c = cat.toLowerCase();
     if (c.includes("basmati") && !c.includes("non")) return "var(--gold)";
     if (c.includes("non-basmati")) return "var(--green)";
@@ -33,8 +40,9 @@ export default function ProductCard({ product }) {
       <div className="product-grid-img overflow-hidden relative" style={{ height: "200px" }}>
         <Image
           src={imagePath}
-          alt={name}
+          alt={name || "Product image"}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         {/* Hover tint */}

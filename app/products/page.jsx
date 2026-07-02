@@ -7,13 +7,15 @@ import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import mockProducts from "../../mock/products.json";
 
 const CATEGORIES = [
   { key: "all",        label: "All Products" },
   { key: "basmati",    label: "Basmati" },
   { key: "non-basmati",label: "Non-Basmati" },
-  { key: "export",     label: "Export Grade" },
   { key: "value",      label: "Value Range" },
+  { key: "export",     label: "Export Grade" },
+  { key: "oem",        label: "OEM" },
 ];
 
 export default function ProductsPage({ searchParams }) {
@@ -31,8 +33,24 @@ export default function ProductsPage({ searchParams }) {
 
     fetch(url)
       .then((r) => r.json())
-      .then((data) => { setProducts(data); setLoading(false); })
-      .catch(() => setLoading(false));
+      .then((data) => {
+        if (data && data.length > 0) {
+          setProducts(data);
+        } else {
+          const fallback = activeCategory === "all"
+            ? mockProducts
+            : mockProducts.filter((p) => p.category === activeCategory);
+          setProducts(fallback);
+        }
+        setLoading(false);
+      })
+      .catch(() => {
+        const fallback = activeCategory === "all"
+          ? mockProducts
+          : mockProducts.filter((p) => p.category === activeCategory);
+        setProducts(fallback);
+        setLoading(false);
+      });
   }, [activeCategory]);
 
   const handleCategory = (key) => {
