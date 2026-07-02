@@ -14,11 +14,13 @@ export const mockProducts = [
 ];
 
 export const mockStats = {
+  dailyCapacityMT: 500,
+  distributionNetwork: 200,
   exportCountries: 10,
   happyClients: 200,
-  yearsExperience: 10
+  storageCapacityMT: 1000,
+  yearsExperience: 40
 };
-
 export const mockTestimonials = [
   {
     id: "t1",
