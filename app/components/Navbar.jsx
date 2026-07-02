@@ -93,12 +93,12 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-5">
           <a
-            href="tel:+919876543210"
+            href="tel:+917320834390"
             className="flex items-center gap-1.5 text-xs font-medium"
             style={{ color: "rgba(255,255,255,0.45)", transition: "color 0.2s" }}
           >
             <Phone size={12} />
-            +91 98765 43210
+            +91 73208 34390
           </a>
           <Link
             href="/contact"

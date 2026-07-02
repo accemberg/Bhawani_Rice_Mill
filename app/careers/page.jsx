@@ -209,7 +209,7 @@ export default function CareersPage() {
                           type="tel" 
                           name="phone"
                           className={`field-input ${errors.phone ? "error" : ""}`} 
-                          placeholder="+91 98765 43210" 
+                          placeholder="+91 73208 34390" 
                           value={formData.phone} 
                           onChange={handleInputChange} 
                         />

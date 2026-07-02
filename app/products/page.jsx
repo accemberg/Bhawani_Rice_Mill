@@ -12,10 +12,6 @@ import mockProducts from "../../mock/products.json";
 const CATEGORIES = [
   { key: "all",        label: "All Products" },
   { key: "basmati",    label: "Basmati" },
-  { key: "non-basmati",label: "Non-Basmati" },
-  { key: "value",      label: "Value Range" },
-  { key: "export",     label: "Export Grade" },
-  { key: "oem",        label: "OEM" },
 ];
 
 export default function ProductsPage({ searchParams }) {

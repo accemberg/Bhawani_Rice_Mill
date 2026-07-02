@@ -66,20 +66,14 @@ export default function QualityPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-20 px-6 sm:px-10 lg:px-16" style={{ background: "var(--charcoal)", color: "white" }}>
-        <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 0, opacity: 0.2 }}>
-           {/* Fallback pattern if no image */}
-           <div className="w-full h-full" style={{ background: "radial-gradient(circle at 50% 50%, var(--green-mid) 0%, transparent 70%)" }}></div>
-        </div>
-        
-        <div className="relative max-w-7xl mx-auto z-10 fade-in">
-          <p style={{ fontSize: "0.75rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--gold)", fontWeight: 700, marginBottom: "1rem" }}>
-            Uncompromising Standards
-          </p>
-          <h1 className="font-heading font-bold" style={{ fontSize: "clamp(2.5rem,6vw,4.5rem)", lineHeight: 1, letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
-            Quality <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Assurance</em>
+      <section className="page-hero">
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 fade-in">
+          <p className="page-hero-eyebrow">Uncompromising Standards</p>
+          <h1 className="page-hero-title">
+            Quality <br />
+            <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Assurance</em>
           </h1>
-          <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.7)", maxWidth: "34rem", lineHeight: 1.7 }}>
+          <p className="page-hero-desc">
             We believe that quality is never an accident; it is always the result of high intention, sincere effort, and skillful execution.
           </p>
         </div>

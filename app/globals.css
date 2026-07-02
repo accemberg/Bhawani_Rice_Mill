@@ -221,7 +221,9 @@ body {
 }
 
 .feature-card-new {
-  border-top: 3px solid var(--gold);
+  border: 0.15rem solid var(--gold);
+  border-radius: 1rem;
+  border-top: 0.35rem solid var(--gold);
   padding: 2rem 1.5rem;
   background: var(--offwhite);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -383,8 +385,12 @@ body {
   white-space: nowrap;
 }
 .counter-suffix {
-  color: var(--gold);
-  font-weight: 900;
+  color: #EAC038;
+  font-family: var(--font-heading), serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 0.8em;
+  margin-left: 0.15rem;
 }
 .counter-label {
   font-size: 0.65rem;
@@ -1095,10 +1101,17 @@ body {
   transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, color 0.25s;
 }
 .mfg-step:hover .mfg-step-icon {
-  background: var(--green);
-  color: white;
-  border-color: var(--green);
-  box-shadow: 0 6px 20px rgba(27,67,50,0.18);
+  background: var(--gold);
+  color: #111;
+  border-color: var(--gold);
+  box-shadow: 0 6px 20px rgba(212,160,23,0.3);
+}
+.mfg-step-icon img {
+  mix-blend-mode: multiply;
+  transition: transform 0.25s;
+}
+.mfg-step:hover .mfg-step-icon img {
+  transform: scale(1.1);
 }
 .mfg-step-title {
   font-size: 0.88rem;

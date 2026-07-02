@@ -19,7 +19,8 @@ import {
 
 export default function HomePage() {
   const videoRef = useRef(null);
-  const [muted, setMuted] = useState(true);
+  const [muted, setMuted] = useState(false);
+  const userUnmutedRef = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,13 +35,70 @@ export default function HomePage() {
       { threshold: 0.06 }
     );
     document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            if (videoRef.current && !videoRef.current.muted) {
+              videoRef.current.muted = true;
+              setMuted(true);
+            }
+          } else {
+            // Auto-restore unmuted state if user had previously unmuted
+            if (videoRef.current && userUnmutedRef.current) {
+              videoRef.current.muted = false;
+              setMuted(false);
+            }
+            // Ensure video plays when back in view
+            if (videoRef.current) {
+              const p = videoRef.current.play();
+              if (p !== undefined) {
+                p.catch(() => { });
+              }
+            }
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+
+    if (videoRef.current) {
+      videoObserver.observe(videoRef.current);
+
+      // Attempt to play unmuted. If browser blocks it, fallback to muted.
+      videoRef.current.muted = false;
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          if (videoRef.current) {
+            videoRef.current.muted = true;
+            setMuted(true);
+            userUnmutedRef.current = false;
+            const p2 = videoRef.current.play();
+            if (p2 !== undefined) {
+              p2.catch(() => { });
+            }
+          }
+        }).then(() => {
+          if (videoRef.current && !videoRef.current.muted) {
+            userUnmutedRef.current = true;
+          }
+        });
+      }
+    }
+
+    return () => {
+      observer.disconnect();
+      videoObserver.disconnect();
+    };
   }, []);
 
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted;
       setMuted(videoRef.current.muted);
+      userUnmutedRef.current = !videoRef.current.muted;
     }
   };
 
@@ -56,21 +114,12 @@ export default function HomePage() {
         <video
           ref={videoRef}
           src="/vid.mp4"
-          autoPlay muted loop playsInline
+          autoPlay loop playsInline
           className="absolute inset-0 w-full h-full object-cover"
           style={{ zIndex: 0 }}
         />
         <div className="hero-overlay absolute inset-0" />
         <div className="grain-overlay absolute inset-0 pointer-events-none" />
-
-        {/* Year watermark background */}
-        <div
-          className="hero-year-watermark absolute select-none pointer-events-none"
-          style={{ bottom: "-2rem", right: "-1rem", zIndex: 3 }}
-          aria-hidden="true"
-        >
-          1985
-        </div>
 
         {/* Main content — left-aligned, not centered */}
         <div
@@ -80,7 +129,7 @@ export default function HomePage() {
           {/* Eyebrow tag */}
           <div className="hero-tag mb-6">
             <span style={{ width: 40, height: 2, background: "var(--gold)", display: "inline-block" }} />
-            Est. 1985 &mdash; Bihar, India
+            Est. 1999 &mdash; Bihar, India
           </div>
 
           {/* Heading */}
@@ -100,7 +149,7 @@ export default function HomePage() {
             {/* Stats — horizontal bar */}
             <div className="flex gap-10 sm:gap-14">
               {[
-                { value: "40+", label: "Years" },
+                { value: "25+", label: "Years" },
                 { value: "30+", label: "Countries" },
                 { value: "100%", label: "Certified" },
               ].map((s) => (
@@ -117,7 +166,7 @@ export default function HomePage() {
           {/* CTA row */}
           <div className="flex flex-col sm:flex-row gap-4 mt-10">
             <a
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center gap-2 font-bold text-sm px-7 py-3.5 rounded-full"
               style={{ background: "var(--gold)", color: "#111", letterSpacing: "0.04em" }}
             >
@@ -132,7 +181,7 @@ export default function HomePage() {
             </a>
           </div>
 
-          
+
         </div>
 
         {/* Mute toggle */}
@@ -245,7 +294,7 @@ export default function HomePage() {
                 </h2>
               </div>
               <a
-                href="#contact"
+                href="/contact"
                 className="hidden lg:inline-flex items-center gap-2 text-sm font-bold"
                 style={{ color: "var(--green)", borderBottom: "2px solid var(--gold)", paddingBottom: "0.25rem" }}
               >
@@ -311,7 +360,7 @@ export default function HomePage() {
                   </div>
 
                   <a
-                    href="#contact"
+                    href="/contact"
                     className="inline-flex items-center gap-2 self-start font-bold text-sm px-6 py-3 rounded-full"
                     style={{ background: "var(--green)", color: "white", letterSpacing: "0.03em" }}
                   >
@@ -366,7 +415,7 @@ export default function HomePage() {
                       ))}
                     </div>
                     <a
-                      href="#contact"
+                      href="/contact"
                       className="inline-flex items-center gap-2 font-bold text-sm px-6 py-3 rounded-full"
                       style={{ background: "var(--gold)", color: "#111", letterSpacing: "0.03em" }}
                     >
@@ -546,7 +595,7 @@ export default function HomePage() {
                 <div className="mfg-connector" aria-hidden="true" />
                 <div className="mfg-step-num">Step {num}</div>
                 <div className="mfg-step-icon">
-                  <Icon size={20} strokeWidth={1.6} />
+                  <img src={`/icons/${title.toLowerCase().replace(/ /g, '-')}.png`} alt={title} width={38} height={38} />
                 </div>
                 <h3 className="mfg-step-title">{title}</h3>
                 <p className="mfg-step-desc">{desc}</p>
@@ -621,14 +670,14 @@ export default function HomePage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="mailto:info@bhawanirice.com"
+                  href="mailto:bhawaniricemillbuxar@gmail.com"
                   className="inline-flex items-center gap-2 font-bold text-sm px-8 py-4 rounded-full"
                   style={{ background: "var(--gold)", color: "#111", letterSpacing: "0.04em" }}
                 >
                   Get a Quote Now <ArrowRight size={15} />
                 </a>
                 <a
-                  href="mailto:info@bhawanirice.com"
+                  href="mailto:bhawaniricemillbuxar@gmail.com"
                   className="inline-flex items-center gap-2 font-bold text-sm px-8 py-4 rounded-full"
                   style={{ border: "1.5px solid rgba(255,255,255,0.2)", color: "white" }}
                 >
