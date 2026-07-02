@@ -1,6 +1,5 @@
 import { initializeApp, getApps, cert, App } from 'firebase-admin/app';
 import { getFirestore, Firestore } from 'firebase-admin/firestore';
-import { getAuth, Auth } from 'firebase-admin/auth';
 
 let app: App;
 
@@ -17,4 +16,9 @@ if (!getApps().length) {
 }
 
 export const db: Firestore = getFirestore(app);
-export const adminAuth: Auth = getAuth(app);
+
+// Lazy-loaded — sirf tab firebase-admin/auth import hoga jab actually call hoga
+export async function getAdminAuth() {
+  const { getAuth } = await import('firebase-admin/auth');
+  return getAuth(app);
+}

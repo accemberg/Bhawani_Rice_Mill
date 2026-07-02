@@ -9,7 +9,6 @@ const STATS = [
   { key: "storageCapacityMT",  label: "Storage Capacity",      suffix: " MT", format: true  },
   { key: "distributionNetwork",label: "Distribution Network",  suffix: "+",  format: false },
   { key: "exportCountries",    label: "Countries Served",      suffix: "+",  format: false },
-  { key: "totalProducts",      label: "Products in Range",     suffix: "+",  format: false },
 ];
 
 function useCountUp(target, duration = 1800, started) {
