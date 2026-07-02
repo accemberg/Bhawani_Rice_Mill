@@ -1,3 +1,5 @@
+"use client";
+
 import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 

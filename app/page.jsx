@@ -7,6 +7,8 @@ import StatsBar from "./components/StatsBar";
 import CertificationsStrip from "./components/CertificationsStrip";
 import TestimonialsSection from "./components/TestimonialsSection";
 import BlogPreview from "./components/BlogPreview";
+import IndustriesSection from "./components/IndustriesSection";
+import SustainabilitySection from "./components/SustainabilitySection";
 import Image from "next/image";
 import {
   CircleCheck, Globe, Building2, VolumeX, Volume2,
@@ -562,6 +564,16 @@ export default function HomePage() {
           </p>
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════
+          INDUSTRIES
+      ═══════════════════════════════════════ */}
+      <IndustriesSection />
+
+      {/* ═══════════════════════════════════════
+          SUSTAINABILITY
+      ═══════════════════════════════════════ */}
+      <SustainabilitySection />
 
       {/* ═══════════════════════════════════════
           TESTIMONIALS
